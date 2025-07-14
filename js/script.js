@@ -14,7 +14,7 @@ function Book(title, author, pages, read = false) {
 Book.prototype.toString = function() {
     let res = "";
     res += this.title + ", by " + this.author + ", ";
-    res += this.pages + " pages, " + "id: " + this.id;
+    res += "Pages: " + this.pages + ", id: " + this.id;
     return res;
 }
 
@@ -34,9 +34,20 @@ function addBookToLibrary(title, author, pages, read = false) {
 }
 
 addBookToLibrary("Hello world", "Me", 21);
-addBookToLibrary("Hi world", "Shortcuts", 1);
-addBookToLibrary("The World", "Dio Brando", 100);
+addBookToLibrary("Hi world", "Shorter Titles", 1);
+addBookToLibrary("The World", "Dio Brando", 26);
 console.log(myLibrary);
 
-const domLibrary = document.querySelector(".library")
+const domLibrary = document.querySelector(".library");
+const theDialog = document.getElementById("theDialog");
+const dialogBtn = document.querySelector(".showDialog");
+const closeDialog = document.getElementById("closeDialog");
+const theForm = document.querySelector("form");
+
+dialogBtn.addEventListener("click", () => theDialog.showModal());
+closeDialog.addEventListener("click", () => {
+    theDialog.showModal();
+    theForm.reset();
+});
+
 updateLibrary();
