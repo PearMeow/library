@@ -1,26 +1,26 @@
 console.log("This script is running");
 
-function Book(title, author, pages, read = false) {
-    if (!new.target) {
-        throw error("New keyword not used for constructor");
+class Book {
+    constructor(title, author, pages, read = false) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+        this.id = crypto.randomUUID();
     }
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.id = crypto.randomUUID();
-}
 
-Book.prototype.toggleRead = function() {
-    this.read = !this.read;
-}
+    toggleRead = () => {
+        this.read = !this.read;
+    }
 
-Book.prototype.toString = function() {
-    let res = "";
-    res += this.title + ", by " + this.author + ", ";
-    res += "Pages: " + this.pages + ", id: " + this.id;
-    res += " Read: " + this.read;
-    return res;
+    toString = () => {
+        let res = "";
+        res += this.title + ", by " + this.author + ", ";
+        res += "Pages: " + this.pages + ", id: " + this.id;
+        res += " Read: " + this.read;
+        return res;
+    }
+
 }
 
 function updateLibrary() {
