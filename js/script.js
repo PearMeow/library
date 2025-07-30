@@ -11,7 +11,7 @@ class Book {
 
     toggleRead = () => {
         this.read = !this.read;
-    }
+    };
 
     toString = () => {
         let res = "";
@@ -19,8 +19,7 @@ class Book {
         res += "Pages: " + this.pages + ", id: " + this.id;
         res += " Read: " + this.read;
         return res;
-    }
-
+    };
 }
 
 function updateLibrary() {
@@ -73,15 +72,19 @@ closeDialog.addEventListener("click", () => {
     theDialog.close();
 });
 
+for (const input of inputList) {
+    input.required = true;
+}
+
 theForm.addEventListener("submit", () => {
-    theDialog.close();
     const formData = theForm.elements;
-    const title = formData["title"].value;
-    const author = formData["author"].value;
-    const pages = formData["pages"].value;
+    const title = formData.title.value;
+    const author = formData.author.value;
+    const pages = formData.pages.value;
     addBookToLibrary(title, author, pages);
     updateLibrary();
     theForm.reset();
-})
+    theDialog.close();
+});
 
 updateLibrary();
